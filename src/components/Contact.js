@@ -23,6 +23,20 @@ export default class Contact extends React.Component{
     this.handleEdit=this.handleEdit.bind(this);
     this.handleRemove=this.handleRemove.bind(this);
   }
+
+  componentWillMount(){
+    const database = localStorage.database;
+    if(database){
+      this.setState({
+        database: JSON.parse(database)
+      });
+    }
+  }
+  componentDidUpdate(prevProps,prevState){
+    if(JSON.stringify(prevState.database) != JSON.stringify(this.state.database)){
+      localStorage.database = JSON.stringify(this.state.database);
+    }
+  }
   handleChange(e){
     this.setState({
       keyword: e.target.value

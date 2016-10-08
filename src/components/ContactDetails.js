@@ -11,6 +11,12 @@ export default class ContactDetails extends React.Component{
     this.handleTogle=this.handleTogle.bind(this);
     this.handleChange=this.handleChange.bind(this);
     this.handleEdit=this.handleEdit.bind(this);
+    this.handleKeyPress=this.handleKeyPress.bind(this);
+  }
+  handleKeyPress(e){
+    if(e.charCode==13){
+      this.handleTogle();
+    }
   }
   handleTogle(){
     if(!this.state.togleKey){
@@ -46,7 +52,7 @@ export default class ContactDetails extends React.Component{
     const edit = (
       <div>
         <p>이름 : <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/></p>
-        <p>전화번호 : <input type='text' name='phone' value={this.state.phone} onChange={this.handleChange}/></p>
+        <p>전화번호 : <input type='text' name='phone' value={this.state.phone} onChange={this.handleChange}onKeyPress={this.handleKeyPress}/></p>
         <button onClick={this.handleTogle}>완료</button>
         <button onClick={this.props.onRemove}>삭제</button>
       </div>
