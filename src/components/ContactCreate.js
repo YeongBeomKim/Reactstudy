@@ -17,12 +17,14 @@ export default class ContactCreate extends React.Component{
   handleClick(){
     const data = {
       name: this.state.name,
-      phone: this.state.phone
+      phone: this.state.phone,
+      comment: this.state.comment
     };
     this.props.onCreate(data);
     this.setState({
       name: '',
-      phone: ''
+      phone: '',
+      comment: ''
     });
   }
   render(){
@@ -31,7 +33,12 @@ export default class ContactCreate extends React.Component{
         <h3>Create Contact</h3>
         <p>
           <input type='text'name='name' value={this.state.name} placeholder='name'onChange={this.handleChange}/>
+        </p>
+        <p>
           <input type='text'name='phone' value={this.state.phone} placeholder='phone'onChange={this.handleChange}/>
+        </p>
+        <p>
+          <input type='text'name='comment' value={this.state.comment} placeholder='comment'onChange={this.handleChange}/>
         </p>
         <button onClick={this.handleClick}>Create</button>
       </div>
