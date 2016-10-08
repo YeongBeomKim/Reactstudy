@@ -10,11 +10,10 @@ export default class Contact extends React.Component{
       keyword: '',
       name: '',
       phone: '',
-      comment: '',
       SelectedKey: -1,
       database: [
-        {name: "YeongBeom", phone: "010-4940-5493", comment: "YBYBYB"},
-        {name: 'HI', phone: "010-010-010", comment: "hihi"}
+        {name: "YeongBeom", phone: "010-4940-5493"},
+        {name: 'HI', phone: "010-010-010"}
       ]
     };
     this.handleChange=this.handleChange.bind(this);
@@ -32,7 +31,6 @@ export default class Contact extends React.Component{
     this.setState({
       name: this.state.name,
       phone: this.state.phone,
-      comment: this.state.comment,
       SelectedKey: key
     });
   }
@@ -47,14 +45,13 @@ export default class Contact extends React.Component{
       SelectedKey: -1
     });
   }
-  handleEdit(name,phone,comment){
+  handleEdit(name,phone){
     this.setState({
       database: update(this.state.database,
         {
           [this.state.SelectedKey]: {
             name: {$set: name},
-            phone: {$set: phone},
-            comment: {$set: comment}
+            phone: {$set: phone}
           }
         }
       ),

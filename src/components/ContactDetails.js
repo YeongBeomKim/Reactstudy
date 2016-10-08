@@ -6,8 +6,7 @@ export default class ContactDetails extends React.Component{
     this.state = {
       togleKey: false,
       name: '',
-      phone: '',
-      comment: ''
+      phone: ''
     };
     this.handleTogle=this.handleTogle.bind(this);
     this.handleChange=this.handleChange.bind(this);
@@ -17,8 +16,7 @@ export default class ContactDetails extends React.Component{
     if(!this.state.togleKey){
       this.setState({
         name: this.props.data.name,
-        phone: this.props.data.phone,
-        comment: this.props.data.comment
+        phone: this.props.data.phone
       });
     }
     else{
@@ -29,7 +27,7 @@ export default class ContactDetails extends React.Component{
     });
   }
   handleEdit(){
-    this.props.onEdit(this.state.name,this.state.phone,this.state.comment);
+    this.props.onEdit(this.state.name,this.state.phone);
   }
   handleChange(e){
     let nextState=[];
@@ -41,7 +39,6 @@ export default class ContactDetails extends React.Component{
       <div>
         <p>이름 : {this.props.data.name}</p>
         <p>전화번호 : {this.props.data.phone}</p>
-        <p>상세정보 : {this.props.data.comment}</p>
         <button onClick={this.handleTogle}>편집</button>
         <button onClick={this.props.onRemove}>삭제</button>
       </div>
@@ -50,7 +47,6 @@ export default class ContactDetails extends React.Component{
       <div>
         <p>이름 : <input type='text' name='name' value={this.state.name} onChange={this.handleChange}/></p>
         <p>전화번호 : <input type='text' name='phone' value={this.state.phone} onChange={this.handleChange}/></p>
-        <p>상세정보 : <input type='text' name='comment' value={this.state.comment} onChange={this.handleChange}/></p>
         <button onClick={this.handleTogle}>완료</button>
         <button onClick={this.props.onRemove}>삭제</button>
       </div>
@@ -67,15 +63,13 @@ export default class ContactDetails extends React.Component{
 ContactDetails.defaultProps = {
   data: {
     name: '',
-    phone: '',
-    comment: ''
+    phone: ''
   },
   isSelected: false,
   onEdit: ()=>{console.error('onEdit is not define')},
   onRemove: ()=>{console.error('onRemove is not define')}
 }
 ContactDetails.propTypes = {
-  data: React.PropTypes.object,
   onEdit: React.PropTypes.func,
   onRemove: React.PropTypes.func
 }
