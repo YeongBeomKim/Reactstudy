@@ -10,10 +10,11 @@ export default class Contact extends React.Component{
       keyword: '',
       name: '',
       phone: '',
+      comment: '',
       SelectedKey: -1,
       database: [
-        {name: "YeongBeom", phone: "010-4940-5493"},
-        {name: 'HI', phone: "010-010-010"}
+        {name: "YeongBeom", phone: "010-4940-5493", comment: "YBYBYB"},
+        {name: 'HI', phone: "010-010-010", comment: "hihi"}
       ]
     };
     this.handleChange=this.handleChange.bind(this);
